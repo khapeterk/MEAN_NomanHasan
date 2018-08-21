@@ -8,7 +8,6 @@ exports.getTodos = async function (req, res, next) {
 
   try {
     var todos = await TodoService.getTodos({}, page, limit)
-
     return generateResponseWithData(res, 200, todos, "Succesfully received Todos")
   } catch(e) {
     return generateResponse(res, 400, e.message)
