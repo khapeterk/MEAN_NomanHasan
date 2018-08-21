@@ -38,4 +38,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://127.0.0.1:27017/todoapp', {useMongoClient: true})
+  .then(()=> { console.log (`Successfully connected to the Mongodb Database at URL : mongodb://127.0.0.1:27017/todoapp`)})
+  .catch(()=> { console.log(`Error connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/todoapp`)})
+
 module.exports = app;
