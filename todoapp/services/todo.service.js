@@ -35,7 +35,7 @@ exports.updateTodo = async function(todo) {
   var id = todo.id
 
   try {
-    var toldTodo = await ToDo.findById(id)
+    var oldTodo = await ToDo.findById(id)
   } catch(e) {
     throw Error("Error occured while finding the Todo")
   }
@@ -62,8 +62,8 @@ exports.updateTodo = async function(todo) {
 
 exports.deleteTodo = async function(id) {
   try {
-    var deleted = await ToDo.remove({_id: id})
-    if (deleted.result.n === 0) {
+    var deleted = await ToDo.deleteOne({_id: id})
+    if(deleted.n === 0) { 
       throw Error("Todo could not be deleted")
     }
     return deleted

@@ -59,9 +59,6 @@ exports.removeTodo = async function(req, res, next) {
   
   try {
     var deleted = await TodoService.deleteTodo(id)
-    if(deleted.n === 0) { 
-      throw Error("Todo could not be deleted")
-    }
     return generateResponse(res, 200, "Successfully deleted Todo")
   } catch(e) {
     return generateResponse(res, 400, e.message)
