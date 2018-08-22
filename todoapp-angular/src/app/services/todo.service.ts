@@ -19,7 +19,7 @@ export class TodoService {
     return this.http.get(this.todoUrl)
       .pipe(
         map(res => {
-          return res["data"].docs as ToDo[];
+          return res["data"] as ToDo[];
         })
       )
   }
